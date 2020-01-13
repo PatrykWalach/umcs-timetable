@@ -5,5 +5,6 @@ module.exports = {
       name: 'umcs-timetable',
       url: 'http://localhost:4000/graphql',
     },
+    excludes: ['schema.gql']
   },
 }

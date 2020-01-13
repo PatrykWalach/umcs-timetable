@@ -13,6 +13,7 @@
 </template>
 <script lang="ts">
 import { createComponent, computed } from '@vue/composition-api'
+import {TimetableDay_activities} from './__generated__/TimetableDay_activities'
 
 interface Props {
   activities: TimetableDay_activities[]
@@ -28,8 +29,8 @@ export default createComponent<Readonly<Props>>({
     const events = computed(() =>
       props.activities.map(({ subject, startTime, endTime }) => ({
         name: subject,
-        start: `${props.start} ${Math.floor(startTime / 60)}:${startTime % 60}`,
-        end: `${props.start} ${Math.floor(endTime / 60)}:${endTime % 60}`,
+        start: `${props.start} ${Math.floor((startTime||0) / 60)}:${(startTime||0) % 60}`,
+        end: `${props.start} ${Math.floor((endTime||0) / 60)}:${(endTime||0) % 60}`,
       })),
     )
 
