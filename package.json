@@ -7,7 +7,7 @@
         "build": "npm run apollo && vue-cli-service build",
         "test:unit": "vue-cli-service test:unit",
         "lint": "vue-cli-service lint",
-        "start": "node server/index.js",
+        "start": "node -r esm server/index.js",
         "apollo": "apollo client:codegen --tagName=gql --target=typescript --useReadOnlyTypes --localSchemaFile=schema.gql",
         "apolloWatch": "apollo client:codegen --tagName=gql --target=typescript --useReadOnlyTypes --watch"
     },
@@ -17,6 +17,7 @@
         "apollo-boost": "^0.4.7",
         "color": "^3.1.2",
         "core-js": "^3.6.3",
+        "esm": "^3.2.25",
         "express": "^4.17.1",
         "express-graphql": "^0.9.0",
         "graphql": "^14.5.8",

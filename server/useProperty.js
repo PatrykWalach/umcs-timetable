@@ -1,4 +1,4 @@
-module.exports = async (element, property) => {
+export const useProperty = async (element, property) => {
   if (!element) {
     return null
   }

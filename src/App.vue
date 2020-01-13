@@ -18,8 +18,6 @@
 </template>
 
 <script lang="ts">
-//*[@id="main"]/div[5]/div[23]
-// import puppeteer from 'puppeteer'
 import { createComponent, ref, computed } from '@vue/composition-api'
 
 export default createComponent({
