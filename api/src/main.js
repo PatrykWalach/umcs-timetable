@@ -47,6 +47,13 @@ const getWeekdayText = weekday => {
   }
 };
 
+const useFilter = (filters, name, transform) => {
+  if (!filters) {
+    return "";
+  }
+  return `:-webkit-any(${filters.map(filter=> `[${name}="${transform(filter)}"]`).join(', ')})`;
+};
+
 const activities = async ({ studentsId, weekday, type, ...rawFilters }) => {
   const browser = await useBrowser();
   const page = await usePage(
@@ -54,7 +61,10 @@ const activities = async ({ studentsId, weekday, type, ...rawFilters }) => {
     `http://moria.umcs.lublin.pl/students/${studentsId}`
   );
 
-  const elements = await useElement(page, `.activity_block`);
+  const elements = await useElement(
+    page,
+    `.activity_block${useFilter(weekday, "data-weekdaytext", getWeekdayText)}${useFilter(type, "data-typename", getTypename)}`
+  );
 
   const activities = elements.map(el => new Activity(el));
 
