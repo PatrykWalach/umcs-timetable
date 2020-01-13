@@ -22,7 +22,7 @@ module.exports = class Activity {
   async teachers() {
     const teachers = await useElement(
       this.el,
-      '.itemlist > ul > li > a[href^="/teacher/"]'
+      '.itemlist > ul > li > a[href^="/teacher/"]:not([href$="/0"])'
     );
 
     return await Promise.all(

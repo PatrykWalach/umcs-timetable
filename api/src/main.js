@@ -63,8 +63,8 @@ type Activity {
   group: Int
   room: String
   subject: String
-  teachers: [String!]
-  students: [String!]
+  teachers: [String!]!
+  students: [String!]!
   weekday: Weekday
   startTime: Int
   endTime: Int
