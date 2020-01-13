@@ -62,8 +62,8 @@ const getTime = time => {
   return parseInt(hours) * 60 + parseInt(minutes);
 };
 
-const getType = type => {
-  switch (type) {
+const getType = typename => {
+  switch (typename) {
     case "seminarium":
       return "SEMINAR";
     case "wykład":
@@ -76,8 +76,8 @@ const getType = type => {
   }
 };
 
-const getWeekday = type => {
-  switch (type) {
+const getWeekday = weekdayText => {
+  switch (weekdayText) {
     case "poniedziałek":
       return "MONDAY";
     case "wtorek":

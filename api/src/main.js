@@ -16,13 +16,45 @@ const usePage = async (page, url) => {
 
 const Activity = require("./Activity.js");
 
-const activities = async ({ studentsId, ...rawFilters }) => {
+const getTypename = type => {
+  switch (type) {
+    case "SEMINAR":
+      return "seminarium";
+    case "LECTURE":
+      return "wykład";
+    case "LAB":
+      return "laboratorium";
+
+    default:
+      return null;
+  }
+};
+
+const getWeekdayText = weekday => {
+  switch (weekday) {
+    case "MONDAY":
+      return "poniedziałek";
+    case "TUESDAY":
+      return "wtorek";
+    case "WEDNESDAY":
+      return "środa";
+    case "THURSDAY":
+      return "czwartek";
+    case "FRIDAY":
+      return "piątek";
+    default:
+      return null;
+  }
+};
+
+const activities = async ({ studentsId, weekday, type, ...rawFilters }) => {
   const browser = await useBrowser();
   const page = await usePage(
     browser,
     `http://moria.umcs.lublin.pl/students/${studentsId}`
   );
-  const elements = await useElement(page, ".activity_block");
+
+  const elements = await useElement(page, `.activity_block`);
 
   const activities = elements.map(el => new Activity(el));
 
