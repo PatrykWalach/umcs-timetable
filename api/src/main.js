@@ -40,10 +40,6 @@ const activities = async ({ studentsId, ...rawFilters }) => {
       activities.filter((activity, i) => filter.includes(results[i]))
     );
   }, activities);
-
-  // return filters.reduce((acc, [key, filter]) =>
-  //    acc.filter(activity => filter.includes(await activity[key]()))
-  // , activities);
 };
 
 const express = require("express");
@@ -67,7 +63,8 @@ type Activity {
   group: Int
   room: String
   subject: String
-  teacher: String
+  teachers: [String!]
+  students: [String!]
   weekday: Weekday
   startTime: Int
   endTime: Int
