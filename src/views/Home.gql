@@ -1,0 +1,32 @@
+#import "../components/TimetableDay.gql"
+
+query HomeQuery(
+  $studentsId: Int!
+  $lab: [Int!]
+  $parlour: [Int!]
+  $weekday: [Weekday!]
+) {
+  parlour: activities(
+    studentsId: $studentsId
+    weekday: $weekday
+    type: [PARLOUR]
+    group: $parlour
+  ) {
+    ...TimetableDay_activities
+  }
+  lab: activities(
+    studentsId: $studentsId
+    weekday: $weekday
+    type: [LAB]
+    group: $lab
+  ) {
+    ...TimetableDay_activities
+  }
+  other: activities(
+    studentsId: $studentsId
+    weekday: $weekday
+    type: [SEMINAR,LECTURE,PRACTICES]
+  ) {
+    ...TimetableDay_activities
+  }
+}

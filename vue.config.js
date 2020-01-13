@@ -1,12 +1,20 @@
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
+  chainWebpack: config => {
+    config.module
+      .rule('graphql')
+      .test(/\.(graphql|gql)$/)
+      .use('graphql-tag/loader')
+      .loader('graphql-tag/loader')
+      .end()
+  },
   configureWebpack: {
     devtool: 'source-map',
     plugins: [new VuetifyLoaderPlugin()],
   },
   devServer: {
     disableHostCheck: true,
-    proxy: 'http://localhost:80'
+    proxy: 'http://localhost:80',
   },
 }

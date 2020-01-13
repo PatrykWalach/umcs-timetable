@@ -4,35 +4,33 @@
 
 <script lang="ts">
 import { useResult, useQuery } from '@vue/apollo-composable'
-import { HomeQuery } from './Home.gql.js'
+import { HomeQuery } from './Home.gql'
 import TimetableDay from '@/components/TimetableDay.vue'
 import { createComponent } from '@vue/composition-api'
+import {
+  HomeQuery as HomeQueryResult,
+  HomeQueryVariables,
+} from './__generated__/HomeQuery'
 
 export default createComponent({
   components: {
     TimetableDay,
   },
-  props: { weekday: { type: String, default: 'MONDAY', required: true } },
-  setup(props) {
-    const { result } = useQuery(HomeQuery, () => ({
-      // group: [6],
-      studentsId: 842,
-      // type: ['LAB'],
-      weekday: [props.weekday],
-    }))
+  setup() {
+    const { result } = useQuery<HomeQueryResult, HomeQueryVariables>(
+      HomeQuery,
+      () => ({
+        studentsId: 842,
+        lab: 6,
+        parlour: 4,
+      }),
+    )
 
-    const activities = useResult(result, [])
+    const activities = useResult(result, [], data =>
+      data.parlour.concat(data.lab, data.other),
+    )
 
     return { activities }
   },
 })
 </script>
-<style lang="scss" scoped>
-.timetable {
-  // display: flex;
-
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-}
-</style>

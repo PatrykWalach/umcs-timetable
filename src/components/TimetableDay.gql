@@ -1,0 +1,7 @@
+
+fragment TimetableDay_activities on Activity {
+  subject
+  startTime
+  endTime
+  weekday
+}
