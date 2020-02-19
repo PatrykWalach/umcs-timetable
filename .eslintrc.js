@@ -14,12 +14,19 @@ module.exports = {
       ],
     },
   ],
-  plugins: ['graphql'],
+  // plugins: ['graphql'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
   },
   root: true,
   rules: {
+    // 'graphql/template-strings': [
+    //   'error',
+    //   {
+    //     env: 'apollo',
+    //     schemaJson: require('./schema.json'),
+    //   },
+    // ],
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
@@ -31,15 +38,5 @@ module.exports = {
     ],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'sort-imports': [
-      'warn',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: false,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-      },
-    ],
-    'sort-keys': 'warn',
   },
 }

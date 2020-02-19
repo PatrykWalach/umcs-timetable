@@ -1,13 +1,13 @@
 <template>
   <v-app>
     <v-app-bar app>
-      <v-tabs v-model="tabs">
+      <!-- <v-tabs v-model="tabs">
         <v-tab href="#monday">Mon</v-tab>
         <v-tab href="#tuesday">Tue</v-tab>
         <v-tab href="#wednesday">Wed</v-tab>
         <v-tab href="#thursday">Thu</v-tab>
         <v-tab href="#friday">Fri</v-tab>
-      </v-tabs>
+      </v-tabs> -->
     </v-app-bar>
     <v-content>
       <keep-alive>
@@ -18,22 +18,20 @@
 </template>
 
 <script lang="ts">
-//*[@id="main"]/div[5]/div[23]
-// import puppeteer from 'puppeteer'
 import { createComponent, ref, computed } from '@vue/composition-api'
 
 export default createComponent({
   setup(_, { root }) {
-    const tabs = computed({
-      get: () => root.$route.params.weekday,
-      set: weekday =>
-        root.$router.push({
-          params: {
-            weekday,
-          },
-        }),
-    })
-    return { tabs }
+    // const tabs = computed({
+    //   get: () => root.$route.params.weekday,
+    //   set: weekday =>
+    //     root.$router.push({
+    //       params: {
+    //         weekday,
+    //       },
+    //     }),
+    // })
+    // return { tabs }
   },
 })
 </script>
