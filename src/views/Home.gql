@@ -6,7 +6,7 @@ query HomeQuery(
   $parlour: [Int!]
   $weekday: [Weekday!]
 ) {
-  parlour: activities(
+  parlour: Activities(
     studentsId: $studentsId
     weekday: $weekday
     type: [PARLOUR]
@@ -14,7 +14,7 @@ query HomeQuery(
   ) {
     ...TimetableDay_activities
   }
-  lab: activities(
+  lab: Activities(
     studentsId: $studentsId
     weekday: $weekday
     type: [LAB]
@@ -22,7 +22,7 @@ query HomeQuery(
   ) {
     ...TimetableDay_activities
   }
-  other: activities(
+  other: Activities(
     studentsId: $studentsId
     weekday: $weekday
     type: [SEMINAR,LECTURE,PRACTICES]

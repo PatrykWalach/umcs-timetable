@@ -2,7 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { Weekday } from "./../../../__generated__/globalTypes";
+import { ActivityWeekday as Weekday } from "./../../../__generated__/globalTypes";
 
 // ====================================================
 // GraphQL fragment: TimetableDay_activities

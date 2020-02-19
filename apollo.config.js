@@ -3,8 +3,8 @@ module.exports = {
     includes: ['src/**/*.vue', '**/*.gql', 'src/**/*.js', '**/*.graphql'],
     service: {
       name: 'umcs-timetable',
-      url: 'http://localhost:80/graphql',
+      // url: 'http://localhost:80/graphql',
     },
-    excludes: ['schema.gql']
+    excludes: ['server/schema/*']
   },
 }
