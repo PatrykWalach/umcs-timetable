@@ -1,6 +1,6 @@
 import { useElement, useTextContent } from '../pupeteer'
-import { getType } from '../schema/ActivityType'
-import { getWeekday } from '../schema/ActivityWeekday'
+import { Typename } from '../schema/ActivityType'
+import { WeekdayText } from '../schema/ActivityWeekday'
 import { ElementHandle } from 'puppeteer'
 
 export class Activity {
@@ -42,7 +42,7 @@ export class Activity {
   }
   async weekday() {
     const weekday = await this.el.evaluate(node => node.dataset.weekdaytext)
-    return getWeekday(weekday)
+    return WeekdayText[weekday]
   }
   async startTime() {
     const time = await this.el.evaluate(node => node.dataset.starttime)
@@ -54,7 +54,7 @@ export class Activity {
   }
   async type() {
     const type = await this.el.evaluate(node => node.dataset.typename)
-    return getType(type)
+    return Typename[type]
   }
 }
 
